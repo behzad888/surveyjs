@@ -1,0 +1,390 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>survey.js : SurveyTriggerVisible</title>
+        <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css"/>
+        <link href="/css/style.css" type="text/css" rel="stylesheet" /> 
+        <link href="/css/main.css" type="text/css" rel="stylesheet" />
+        <link href="/css/custom-checkbox.css" type="text/css" rel="stylesheet" />
+        
+        
+        
+        
+        <link href="/css/prism.css" type="text/css" rel="stylesheet" />
+        <script src="/js/prism.js"></script>
+        
+    </head>
+    <body class="white-bg">
+        
+<nav class="navbar navbar-default menu-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/index.html">Survey.JS</a>
+            <a class="version-link" role="button" href="https://github.com/surveyjs/surveyjs/releases" target="_blank">
+                the latest version 0.12.13
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class='active'><a rel="home" href="/index.html" >Home</a></li>
+            <li ><a rel="examples" href="/examples/jquery/">Examples</a></li>
+            <li ><a rel="builder" href="/builder/">Survey Editor</a></li>
+            <li ><a rel="examples" href="/integration.html">Integration</a></li>
+            <li><a href="http://surveyjs.io" target="_blank">SurveyJS Project</a></li>
+            <li><a href="http://github.com/surveyjs/surveyjs" target="_blank">Source</a></li>
+            <li><a href="https://github.com/surveyjs/surveyjs/issues" target="_blank">Issues</a></li>
+        </ul>
+    </div>
+</nav>
+        <div class="maincontent">
+        <div class="surveyjs-doc-page-wrapper">
+    <div class="doc-page-container">
+
+        <nav class="navbar-default navbar-static-side menu-sidebar" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+        
+            <li >
+                <span>Gettting started</span>
+                <ul id="docs-started" class="nav nav-second-level">
+                
+                
+                    <li >
+                        <a href="/docs/integration.html">
+                            <div>Insert survey into your web page/site</div>
+                        </a>
+                    </li>
+                    
+                
+                </ul>
+            </li>
+        
+            <li >
+                <span>Survey Objects API</span>
+                <ul id="docs-api" class="nav nav-second-level">
+                
+                    
+                
+                    
+                    <li >
+                        <a href="/docs/api_surveymodel.html">
+                            <div>Survey</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_pagemodel.html">
+                            <div>Page</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_panelmodel.html">
+                            <div>Panel</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questiontextmodel.html">
+                            <div>Question Text</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionradiogroupmodel.html">
+                            <div>Question Radiogroup</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questioncheckboxmodel.html">
+                            <div>Question Checkbox</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questiondropdownmodel.html">
+                            <div>Question Dropdown</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questioncommentmodel.html">
+                            <div>Question Comment</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionmatrixmodel.html">
+                            <div>Question Matrix</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionmatrixdropdownmodel.html">
+                            <div>Question Matrix Dropdown</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionmatrixdynamicmodel.html">
+                            <div>Question Matrix Dynamic</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionmultipletextmodel.html">
+                            <div>Question Multiple Text</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionhtmlmodel.html">
+                            <div>Question Html</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionfilemodel.html">
+                            <div>Question File</div>
+                        </a>
+                    </li>
+                    
+                
+                </ul>
+            </li>
+        
+        </ul>        
+    </div>
+</nav>
+
+<script type="text/javascript">
+    function doExpand(categoryName) {
+        var ulCategory = document.getElementById("docs-" + categoryName);
+        if(!ulCategory) return;
+        var display = ulCategory.style.display;
+        ulCategory.style.display = display == "none" ? "" : "none";
+        var imgCategory = document.getElementById("img-" + categoryName);
+        if(!imgCategory) return;
+        imgCategory.className = display == "none" ? "glyphicon pull-right glyphicon-chevron-up" : "glyphicon pull-right glyphicon-chevron-down";
+    }
+</script>
+
+
+        <div class="doc-content-wrapper">
+            <div class="doc-container">
+                <div class="doc-content">
+                    <div id="objectProperties">
+    <h2><span data-bind="text: curClass.name"></span></h2>
+    <p data-bind="visible:classHasDocumentation">
+        <div data-bind="html: curClass.documentation"></div>
+    </p>
+    <p>
+        <span>Type to filter the list: </span><input id="iFilter" type="text" data-bind="textInput: filterString" />
+    </p>
+    <div data-bind="foreach: filteredItems">
+        <div><a data-bind="click:showHide"><span data-bind="text: name"></span></a></div>
+        <div data-bind="visible: koExpanded">
+            <p>
+                <h4><span data-bind="text: name"></span><span>  </span><span data-bind="text: pmeType"></h4>
+                <div>
+                    <span>Type: </span><span data-bind="text:type"></span>
+                </div>
+                <div data-bind="visible: hasDocumentation, html: documentation"></div>
+                <div data-bind="visible: hasParameters">
+                    <h5>Parameters:</h5>
+                    <div data-bind="foreach: parameters">
+                        <div><span>Name: </span><span data-bind="text:name"></span><span>, type: </span><span data-bind="text:type"></span></div>
+                        <div data-bind="visible: hasDocumentation"><span>Documentation: </span><span data-bind="html:documentation"></span></div>
+                    </div>
+                </div>
+                <div>
+                    <span>Implemented in: </span>
+                    <!-- ko foreach: implemetedIn -->
+                    <a data-bind="attr: {href: href}"><span data-bind="text: name"></span></a>
+                    <!-- /ko -->
+                </div>
+                <!--<a data-bind="attr: {href: href}"><span>Show more</span></a>-->
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+<script>
+    var curClass = {
+    
+        
+        name: "SurveyTriggerVisible", documentation: "<p>If expression returns true, it makes questions/pages visible.\nOhterwise it makes them invisible.</p>\n"
+    
+    };
+    var pmes = [
+    
+    { name: "isValueEmpty", className: "Base", type: "(value: any) => boolean", pmeType: "method", "href": "Base/isValueEmpty.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "value", documentation: "\n", type: "any" } 
+                    
+        ] }, 
+    
+    { name: "getType", className: "Base", type: "() => string", pmeType: "method", "href": "Base/getType.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "value", className: "Trigger", type: "any", pmeType: "property", "href": "Trigger/value.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "operator", className: "Trigger", type: "string", pmeType: "property", "href": "Trigger/operator.html", isSerialized: "", documentation: "\n", hasSet: "true", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "check", className: "Trigger", type: "(value: any) => void", pmeType: "method", "href": "Trigger/check.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "value", documentation: "\n", type: "any" } 
+                    
+        ] }, 
+    
+    { name: "name", className: "SurveyTrigger", type: "string", pmeType: "property", "href": "SurveyTrigger/name.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "setOwner", className: "SurveyTrigger", type: "(owner: ISurveyTriggerOwner) => void", pmeType: "method", "href": "SurveyTrigger/setOwner.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "owner", documentation: "\n", type: "ISurveyTriggerOwner" } 
+                    
+        ] }, 
+    
+    { name: "isOnNextPage", className: "SurveyTrigger", type: "boolean", pmeType: "property", "href": "SurveyTrigger/isOnNextPage.html", isSerialized: "", documentation: "\n", hasSet: "false", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "pages", className: "SurveyTriggerVisible", type: "string[]", pmeType: "property", "href": "SurveyTriggerVisible/pages.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "questions", className: "SurveyTriggerVisible", type: "string[]", pmeType: "property", "href": "SurveyTriggerVisible/questions.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "getType", className: "SurveyTriggerVisible", type: "() => string", pmeType: "method", "href": "SurveyTriggerVisible/getType.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    ];
+    pmes.sort(function(a, b) {
+        if(a.name == b.name) return 0;
+        return a.name < b.name ? -1 : 1;
+    });
+    var ModelItem = function(item) {
+        this.getClassObj = function(className) {
+            return {name: className, href: "/docs/api_" + className.toLowerCase() + ".html"};
+        }
+        var self = this;
+        this.name = item.name;
+        this.lowCaseName = this.name.toLowerCase();
+        this.className = item.className;
+        this.implemetedIn = [];
+        this.implemetedIn.push(this.getClassObj(item.className));
+        this.type = item.type;
+        this.pmeType = item.pmeType;
+        this.href = item.href;
+        this.documentation = item.documentation;
+        this.hasDocumentation = item.documentation && item.documentation.length > 0;
+        this.parameters = [];
+        if(item.parameters) {
+            this.parameters = item.parameters;
+            for(var i = 0; i < this.parameters.length; i ++) {
+                var doc = this.parameters[i].documentation;
+                if(doc) {
+                    doc = doc.replace(/(\r\n|\n|\r)/gm,"");
+                }
+                this.parameters[i].hasDocumentation = doc && doc.length > 0;
+            }
+        }
+        this.hasParameters = this.parameters.length > 0;
+        this.hasSet = item.hasSet == "true";
+        this.isSerialized = item.isSerialized == "true";
+        this.koExpanded = ko.observable(false);
+        this.showHide = function() {
+            self.koExpanded(!self.koExpanded());
+        }
+        this.addItem = function(item) {
+            if(!this.documentation && item.documentation) {
+                this.documentation = item.documentation;
+            }
+            this.implemetedIn.push(this.getClassObj(item.className));
+        }
+    }
+    var Model = function(className) {
+        var self = this;
+        this.curClass = curClass;
+        this.classHasDocumentation = this.curClass.documentation != "";
+        this.items = [];
+        var pmesHash = {};
+        for(var i = 0; i < pmes.length; i ++) {
+            if(!pmes[i].name) continue;
+            if(pmesHash[pmes[i].name]) {
+                pmesHash[pmes[i].name].addItem(pmes[i]);
+            } else {
+                var modelItem = new ModelItem(pmes[i]);
+                this.items.push(modelItem);
+                pmesHash[modelItem.name] = modelItem;
+            }
+        }
+        this.filterString = ko.observable("");
+        this.koDummy = ko.observable(0);
+        this.filteredItems = ko.computed(function() {
+            var dummy = self.koDummy();
+             return ko.utils.arrayFilter(self.items, function(item) {
+                var str = self.filterString();
+                if(!str) return true;
+                str = str.toLowerCase();
+                return (item.lowCaseName.indexOf(str) > -1);
+            });
+        });
+        this.filterString.subscribe(function(newValue) {
+            self.koDummy(self.koDummy() + 1);
+        });
+};
+ 
+ko.applyBindings(new Model("SurveyTriggerVisible"), document.getElementById("objectProperties"));
+ </script>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer class="panel-footer">
+    Copyright ©2015-2017 <a href="http://surveyjs.io" target="_blank">SurveyJS Project</a>
+</footer>
+
+</div>
+        </div>
+        
+        <script type="text/javascript">               
+            // Analytics
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-74958675-1']);
+            _gaq.push(['_trackPageview']);	
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();             
+        </script>        
+    </body>
+</html>

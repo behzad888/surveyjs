@@ -1,0 +1,534 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>survey.js : PanelModelBase</title>
+        <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css"/>
+        <link href="/css/style.css" type="text/css" rel="stylesheet" /> 
+        <link href="/css/main.css" type="text/css" rel="stylesheet" />
+        <link href="/css/custom-checkbox.css" type="text/css" rel="stylesheet" />
+        
+        
+        
+        
+        <link href="/css/prism.css" type="text/css" rel="stylesheet" />
+        <script src="/js/prism.js"></script>
+        
+    </head>
+    <body class="white-bg">
+        
+<nav class="navbar navbar-default menu-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/index.html">Survey.JS</a>
+            <a class="version-link" role="button" href="https://github.com/surveyjs/surveyjs/releases" target="_blank">
+                the latest version 0.12.13
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class='active'><a rel="home" href="/index.html" >Home</a></li>
+            <li ><a rel="examples" href="/examples/jquery/">Examples</a></li>
+            <li ><a rel="builder" href="/builder/">Survey Editor</a></li>
+            <li ><a rel="examples" href="/integration.html">Integration</a></li>
+            <li><a href="http://surveyjs.io" target="_blank">SurveyJS Project</a></li>
+            <li><a href="http://github.com/surveyjs/surveyjs" target="_blank">Source</a></li>
+            <li><a href="https://github.com/surveyjs/surveyjs/issues" target="_blank">Issues</a></li>
+        </ul>
+    </div>
+</nav>
+        <div class="maincontent">
+        <div class="surveyjs-doc-page-wrapper">
+    <div class="doc-page-container">
+
+        <nav class="navbar-default navbar-static-side menu-sidebar" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+        
+            <li >
+                <span>Gettting started</span>
+                <ul id="docs-started" class="nav nav-second-level">
+                
+                
+                    <li >
+                        <a href="/docs/integration.html">
+                            <div>Insert survey into your web page/site</div>
+                        </a>
+                    </li>
+                    
+                
+                </ul>
+            </li>
+        
+            <li >
+                <span>Survey Objects API</span>
+                <ul id="docs-api" class="nav nav-second-level">
+                
+                    
+                
+                    
+                    <li >
+                        <a href="/docs/api_surveymodel.html">
+                            <div>Survey</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_pagemodel.html">
+                            <div>Page</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_panelmodel.html">
+                            <div>Panel</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questiontextmodel.html">
+                            <div>Question Text</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionradiogroupmodel.html">
+                            <div>Question Radiogroup</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questioncheckboxmodel.html">
+                            <div>Question Checkbox</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questiondropdownmodel.html">
+                            <div>Question Dropdown</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questioncommentmodel.html">
+                            <div>Question Comment</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionmatrixmodel.html">
+                            <div>Question Matrix</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionmatrixdropdownmodel.html">
+                            <div>Question Matrix Dropdown</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionmatrixdynamicmodel.html">
+                            <div>Question Matrix Dynamic</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionmultipletextmodel.html">
+                            <div>Question Multiple Text</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionhtmlmodel.html">
+                            <div>Question Html</div>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="/docs/api_questionfilemodel.html">
+                            <div>Question File</div>
+                        </a>
+                    </li>
+                    
+                
+                </ul>
+            </li>
+        
+        </ul>        
+    </div>
+</nav>
+
+<script type="text/javascript">
+    function doExpand(categoryName) {
+        var ulCategory = document.getElementById("docs-" + categoryName);
+        if(!ulCategory) return;
+        var display = ulCategory.style.display;
+        ulCategory.style.display = display == "none" ? "" : "none";
+        var imgCategory = document.getElementById("img-" + categoryName);
+        if(!imgCategory) return;
+        imgCategory.className = display == "none" ? "glyphicon pull-right glyphicon-chevron-up" : "glyphicon pull-right glyphicon-chevron-down";
+    }
+</script>
+
+
+        <div class="doc-content-wrapper">
+            <div class="doc-container">
+                <div class="doc-content">
+                    <div id="objectProperties">
+    <h2><span data-bind="text: curClass.name"></span></h2>
+    <p data-bind="visible:classHasDocumentation">
+        <div data-bind="html: curClass.documentation"></div>
+    </p>
+    <p>
+        <span>Type to filter the list: </span><input id="iFilter" type="text" data-bind="textInput: filterString" />
+    </p>
+    <div data-bind="foreach: filteredItems">
+        <div><a data-bind="click:showHide"><span data-bind="text: name"></span></a></div>
+        <div data-bind="visible: koExpanded">
+            <p>
+                <h4><span data-bind="text: name"></span><span>  </span><span data-bind="text: pmeType"></h4>
+                <div>
+                    <span>Type: </span><span data-bind="text:type"></span>
+                </div>
+                <div data-bind="visible: hasDocumentation, html: documentation"></div>
+                <div data-bind="visible: hasParameters">
+                    <h5>Parameters:</h5>
+                    <div data-bind="foreach: parameters">
+                        <div><span>Name: </span><span data-bind="text:name"></span><span>, type: </span><span data-bind="text:type"></span></div>
+                        <div data-bind="visible: hasDocumentation"><span>Documentation: </span><span data-bind="html:documentation"></span></div>
+                    </div>
+                </div>
+                <div>
+                    <span>Implemented in: </span>
+                    <!-- ko foreach: implemetedIn -->
+                    <a data-bind="attr: {href: href}"><span data-bind="text: name"></span></a>
+                    <!-- /ko -->
+                </div>
+                <!--<a data-bind="attr: {href: href}"><span>Show more</span></a>-->
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+<script>
+    var curClass = {
+    
+        
+        name: "PanelModelBase", documentation: "<p>A base class for a Panel and Page objects.</p>\n"
+    
+    };
+    var pmes = [
+    
+    { name: "isValueEmpty", className: "Base", type: "(value: any) => boolean", pmeType: "method", "href": "Base/isValueEmpty.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "value", documentation: "\n", type: "any" } 
+                    
+        ] }, 
+    
+    { name: "getType", className: "Base", type: "() => string", pmeType: "method", "href": "Base/getType.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "parent", className: "PanelModelBase", type: "PanelModelBase", pmeType: "property", "href": "PanelModelBase/parent.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "visibleIf", className: "PanelModelBase", type: "string", pmeType: "property", "href": "PanelModelBase/visibleIf.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "visibleIndex", className: "PanelModelBase", type: "number", pmeType: "property", "href": "PanelModelBase/visibleIndex.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "data", className: "PanelModelBase", type: "ISurvey", pmeType: "property", "href": "PanelModelBase/data.html", isSerialized: "", documentation: "\n", hasSet: "true", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "title", className: "PanelModelBase", type: "string", pmeType: "property", "href": "PanelModelBase/title.html", isSerialized: "", documentation: "\n", hasSet: "true", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "locTitle", className: "PanelModelBase", type: "LocalizableString", pmeType: "property", "href": "PanelModelBase/locTitle.html", isSerialized: "", documentation: "\n", hasSet: "false", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "getLocale", className: "PanelModelBase", type: "() => string", pmeType: "method", "href": "PanelModelBase/getLocale.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "getMarkdownHtml", className: "PanelModelBase", type: "(text: string) => string", pmeType: "method", "href": "PanelModelBase/getMarkdownHtml.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "text", documentation: "\n", type: "string" } 
+                    
+        ] }, 
+    
+    { name: "id", className: "PanelModelBase", type: "string", pmeType: "property", "href": "PanelModelBase/id.html", isSerialized: "", documentation: "\n", hasSet: "false", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "isPanel", className: "PanelModelBase", type: "boolean", pmeType: "property", "href": "PanelModelBase/isPanel.html", isSerialized: "", documentation: "\n", hasSet: "false", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "questions", className: "PanelModelBase", type: "QuestionBase[]", pmeType: "property", "href": "PanelModelBase/questions.html", isSerialized: "", documentation: "\n", hasSet: "false", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "elements", className: "PanelModelBase", type: "IElement[]", pmeType: "property", "href": "PanelModelBase/elements.html", isSerialized: "", documentation: "\n", hasSet: "false", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "containsElement", className: "PanelModelBase", type: "(element: IElement) => boolean", pmeType: "method", "href": "PanelModelBase/containsElement.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "element", documentation: "\n", type: "IElement" } 
+                    
+        ] }, 
+    
+    { name: "hasErrors", className: "PanelModelBase", type: "(fireCallback?: boolean, focuseOnFirstError?: boolean) => boolean", pmeType: "method", "href": "PanelModelBase/hasErrors.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "fireCallback", documentation: "\n", type: "boolean" }, 
+            
+            { name: "focuseOnFirstError", documentation: "\n", type: "boolean" } 
+                    
+        ] }, 
+    
+    { name: "addQuestionsToList", className: "PanelModelBase", type: "(list: IQuestion[], visibleOnly?: boolean) => void", pmeType: "method", "href": "PanelModelBase/addQuestionsToList.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "list", documentation: "\n", type: "IQuestion[]" }, 
+            
+            { name: "visibleOnly", documentation: "\n", type: "boolean" } 
+                    
+        ] }, 
+    
+    { name: "rows", className: "PanelModelBase", type: "QuestionRowModel[]", pmeType: "property", "href": "PanelModelBase/rows.html", isSerialized: "", documentation: "\n", hasSet: "false", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "isActive", className: "PanelModelBase", type: "boolean", pmeType: "property", "href": "PanelModelBase/isActive.html", isSerialized: "", documentation: "\n", hasSet: "false", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "onSurveyLoad", className: "PanelModelBase", type: "() => void", pmeType: "method", "href": "PanelModelBase/onSurveyLoad.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "processedTitle", className: "PanelModelBase", type: "string", pmeType: "property", "href": "PanelModelBase/processedTitle.html", isSerialized: "", documentation: "\n", hasSet: "false", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "visible", className: "PanelModelBase", type: "boolean", pmeType: "property", "href": "PanelModelBase/visible.html", isSerialized: "", documentation: "\n", hasSet: "true", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "isVisible", className: "PanelModelBase", type: "boolean", pmeType: "property", "href": "PanelModelBase/isVisible.html", isSerialized: "", documentation: "\n", hasSet: "false", 
+        parameters:  [
+                    
+        ] }, 
+    
+    { name: "getIsPageVisible", className: "PanelModelBase", type: "(exceptionQuestion: IQuestion) => boolean", pmeType: "method", "href": "PanelModelBase/getIsPageVisible.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "exceptionQuestion", documentation: "\n", type: "IQuestion" } 
+                    
+        ] }, 
+    
+    { name: "addElement", className: "PanelModelBase", type: "(element: IElement, index?: number) => void", pmeType: "method", "href": "PanelModelBase/addElement.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "element", documentation: "\n", type: "IElement" }, 
+            
+            { name: "index", documentation: "\n", type: "number" } 
+                    
+        ] }, 
+    
+    { name: "addQuestion", className: "PanelModelBase", type: "(question: QuestionBase, index?: number) => void", pmeType: "method", "href": "PanelModelBase/addQuestion.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "question", documentation: "\n", type: "QuestionBase" }, 
+            
+            { name: "index", documentation: "\n", type: "number" } 
+                    
+        ] }, 
+    
+    { name: "addPanel", className: "PanelModelBase", type: "(panel: PanelModel, index?: number) => void", pmeType: "method", "href": "PanelModelBase/addPanel.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "panel", documentation: "\n", type: "PanelModel" }, 
+            
+            { name: "index", documentation: "\n", type: "number" } 
+                    
+        ] }, 
+    
+    { name: "addNewQuestion", className: "PanelModelBase", type: "(questionType: string, name: string) => QuestionBase", pmeType: "method", "href": "PanelModelBase/addNewQuestion.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "questionType", documentation: "\n", type: "string" }, 
+            
+            { name: "name", documentation: "\n", type: "string" } 
+                    
+        ] }, 
+    
+    { name: "addNewPanel", className: "PanelModelBase", type: "(name: string) => PanelModel", pmeType: "method", "href": "PanelModelBase/addNewPanel.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "name", documentation: "\n", type: "string" } 
+                    
+        ] }, 
+    
+    { name: "removeElement", className: "PanelModelBase", type: "(element: IElement) => boolean", pmeType: "method", "href": "PanelModelBase/removeElement.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "element", documentation: "\n", type: "IElement" } 
+                    
+        ] }, 
+    
+    { name: "removeQuestion", className: "PanelModelBase", type: "(question: QuestionBase) => void", pmeType: "method", "href": "PanelModelBase/removeQuestion.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "question", documentation: "\n", type: "QuestionBase" } 
+                    
+        ] }, 
+    
+    { name: "runCondition", className: "PanelModelBase", type: "(values: HashTable<any>) => void", pmeType: "method", "href": "PanelModelBase/runCondition.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+            
+            { name: "values", documentation: "\n", type: "HashTable<any>" } 
+                    
+        ] }, 
+    
+    { name: "onLocaleChanged", className: "PanelModelBase", type: "() => void", pmeType: "method", "href": "PanelModelBase/onLocaleChanged.html", isSerialized: "", documentation: "\n", hasSet: "", 
+        parameters:  [
+                    
+        ] }, 
+    ];
+    pmes.sort(function(a, b) {
+        if(a.name == b.name) return 0;
+        return a.name < b.name ? -1 : 1;
+    });
+    var ModelItem = function(item) {
+        this.getClassObj = function(className) {
+            return {name: className, href: "/docs/api_" + className.toLowerCase() + ".html"};
+        }
+        var self = this;
+        this.name = item.name;
+        this.lowCaseName = this.name.toLowerCase();
+        this.className = item.className;
+        this.implemetedIn = [];
+        this.implemetedIn.push(this.getClassObj(item.className));
+        this.type = item.type;
+        this.pmeType = item.pmeType;
+        this.href = item.href;
+        this.documentation = item.documentation;
+        this.hasDocumentation = item.documentation && item.documentation.length > 0;
+        this.parameters = [];
+        if(item.parameters) {
+            this.parameters = item.parameters;
+            for(var i = 0; i < this.parameters.length; i ++) {
+                var doc = this.parameters[i].documentation;
+                if(doc) {
+                    doc = doc.replace(/(\r\n|\n|\r)/gm,"");
+                }
+                this.parameters[i].hasDocumentation = doc && doc.length > 0;
+            }
+        }
+        this.hasParameters = this.parameters.length > 0;
+        this.hasSet = item.hasSet == "true";
+        this.isSerialized = item.isSerialized == "true";
+        this.koExpanded = ko.observable(false);
+        this.showHide = function() {
+            self.koExpanded(!self.koExpanded());
+        }
+        this.addItem = function(item) {
+            if(!this.documentation && item.documentation) {
+                this.documentation = item.documentation;
+            }
+            this.implemetedIn.push(this.getClassObj(item.className));
+        }
+    }
+    var Model = function(className) {
+        var self = this;
+        this.curClass = curClass;
+        this.classHasDocumentation = this.curClass.documentation != "";
+        this.items = [];
+        var pmesHash = {};
+        for(var i = 0; i < pmes.length; i ++) {
+            if(!pmes[i].name) continue;
+            if(pmesHash[pmes[i].name]) {
+                pmesHash[pmes[i].name].addItem(pmes[i]);
+            } else {
+                var modelItem = new ModelItem(pmes[i]);
+                this.items.push(modelItem);
+                pmesHash[modelItem.name] = modelItem;
+            }
+        }
+        this.filterString = ko.observable("");
+        this.koDummy = ko.observable(0);
+        this.filteredItems = ko.computed(function() {
+            var dummy = self.koDummy();
+             return ko.utils.arrayFilter(self.items, function(item) {
+                var str = self.filterString();
+                if(!str) return true;
+                str = str.toLowerCase();
+                return (item.lowCaseName.indexOf(str) > -1);
+            });
+        });
+        this.filterString.subscribe(function(newValue) {
+            self.koDummy(self.koDummy() + 1);
+        });
+};
+ 
+ko.applyBindings(new Model("PanelModelBase"), document.getElementById("objectProperties"));
+ </script>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer class="panel-footer">
+    Copyright ©2015-2017 <a href="http://surveyjs.io" target="_blank">SurveyJS Project</a>
+</footer>
+
+</div>
+        </div>
+        
+        <script type="text/javascript">               
+            // Analytics
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-74958675-1']);
+            _gaq.push(['_trackPageview']);	
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();             
+        </script>        
+    </body>
+</html>

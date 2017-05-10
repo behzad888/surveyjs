@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>survey.js : Visual Editor for JavaScript JSON based Survey Library</title>
-        <link rel="stylesheet" href="https://getbootstrap.com/dist/css/bootstrap.css"/>
+        <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css"/>
         <link href="/css/style.css" type="text/css" rel="stylesheet" /> 
         <link href="/css/main.css" type="text/css" rel="stylesheet" />
         <link href="/css/custom-checkbox.css" type="text/css" rel="stylesheet" />
@@ -15,8 +15,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         
         
-        <script src="/js/knockout.js"></script>
-        <script src="https://surveyjs.azureedge.net/0.12.11/survey.ko.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+        <script src="https://surveyjs.azureedge.net/0.12.13/survey.ko.js"></script>
         
         <link href="/css/prism.css" type="text/css" rel="stylesheet" />
         <script src="/js/prism.js"></script>
@@ -24,12 +24,12 @@
     </head>
     <body class="white-bg">
         
-<nav class="navbar navbar-default survey-gray survey-navbar">
+<nav class="navbar navbar-default menu-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/index.html">Survey.JS</a>
             <a class="version-link" role="button" href="https://github.com/surveyjs/surveyjs/releases" target="_blank">
-                the latest version 0.12.11
+                the latest version 0.12.13
             </a>
         </div>
         <ul class="nav navbar-nav">
@@ -39,6 +39,7 @@
             <li class=''><a rel="home" href="/index.html" >Home</a></li>
             <li ><a rel="examples" href="/examples/jquery/">Examples</a></li>
             <li class='active'><a rel="builder" href="/builder/">Survey Editor</a></li>
+            <li ><a rel="examples" href="/integration.html">Integration</a></li>
             <li><a href="http://surveyjs.io" target="_blank">SurveyJS Project</a></li>
             <li><a href="http://github.com/surveyjs/surveyjs" target="_blank">Source</a></li>
             <li><a href="https://github.com/surveyjs/surveyjs/issues" target="_blank">Issues</a></li>
@@ -51,9 +52,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/mode-json.js" type="text/javascript" charset="utf-8"></script> 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script> 
-<link href="https://surveyjs.azureedge.net/0.12.11/surveyeditor.css" type="text/css" rel="stylesheet" />
+<link href="https://surveyjs.azureedge.net/0.12.13/surveyeditor.css" type="text/css" rel="stylesheet" />
 <link href="/css/custom-surveyeditor.css" type="text/css" rel="stylesheet" />
-<script src="https://surveyjs.azureedge.net/0.12.11/surveyeditor.js"></script>
+<script src="https://surveyjs.azureedge.net/0.12.13/surveyeditor.js"></script>
 
 <div id="manage" data-bind="template: 'surveys-manage'" style="position: relative;"></div>
 <style>
