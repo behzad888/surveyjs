@@ -320,9 +320,8 @@ a.navy-link {
         .home .integration .frameworks a {
           margin-right: 50px; } }
 .home .options {
-  background-color: #fff; }
-  .home .options h1 {
-    margin-bottom: 50px; }
+  background-color: #fff;
+  padding-top: 50px; }
   .home .options .col-lg-4 {
     padding: 0; }
   .home .options .content {
