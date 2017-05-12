@@ -330,6 +330,23 @@
                 </ul>
             </li>
         
+            <li >
+                <a href="#" onclick="doExpand('skins')">
+                    <span>Skins</span>
+                    <span id="imgskins" class="glyphicon pull-right glyphicon-chevron-down" aria-hidden="true"></span>
+                </a>
+                <ul id="examplesskins" class="nav nav-second-level"style="display:none">
+                
+                    <li >
+                        <a href="skin-bootstrap-material.html">
+                            <span>Bootstrap Material</span>
+                            <div><small>Bootstrap Material skin</small></div>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </li>
+        
             <li class="active">
                 <a href="#" onclick="doExpand('triggers')">
                     <span>Conditions and Triggers</span>
@@ -548,6 +565,7 @@
             <h3 class="contenttitle">Visible Trigger - Show/Hide question(s) on survey running.</h3>
             
             
+            
                 
                     <ng-app></ng-app>
                 
@@ -720,6 +738,7 @@ The visible trigger makes the list of 'questions' and/or 'pages' visibles if the
 The following 'operator' values are available: "empty", "notempty", "equal", "notequal", "greater", "less", "greaterorequal", "lessorequal", "contains" and "notcontains". The default value is "equal".
 </p>
         </div>
+        
         
     </div>
 </div>

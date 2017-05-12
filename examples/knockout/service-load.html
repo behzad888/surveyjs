@@ -320,6 +320,23 @@
             </li>
         
             <li >
+                <a href="#" onclick="doExpand('skins')">
+                    <span>Skins</span>
+                    <span id="imgskins" class="glyphicon pull-right glyphicon-chevron-down" aria-hidden="true"></span>
+                </a>
+                <ul id="examplesskins" class="nav nav-second-level"style="display:none">
+                
+                    <li >
+                        <a href="skin-bootstrap-material.html">
+                            <span>Bootstrap Material</span>
+                            <div><small>Bootstrap Material skin</small></div>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </li>
+        
+            <li >
                 <a href="#" onclick="doExpand('triggers')">
                     <span>Conditions and Triggers</span>
                     <span id="imgtriggers" class="glyphicon pull-right glyphicon-chevron-down" aria-hidden="true"></span>
@@ -537,6 +554,7 @@
             <h3 class="contenttitle">Load survey json from the dxSurvey Service</h3>
             
             
+            
                 
                     <div id="surveyContainer" class="survey-container contentcontainer  codecontainer">
                         <div id="surveyElement">
@@ -613,6 +631,7 @@ var survey = new Survey.Model( { surveyId: &#39;5af48e08-a0a5-44a5-83f4-1c90e8e9
 
             </div>
         </div>
+        
         
     </div>
 </div>

@@ -322,6 +322,23 @@
             </li>
         
             <li >
+                <a href="#" onclick="doExpand('skins')">
+                    <span>Skins</span>
+                    <span id="imgskins" class="glyphicon pull-right glyphicon-chevron-down" aria-hidden="true"></span>
+                </a>
+                <ul id="examplesskins" class="nav nav-second-level"style="display:none">
+                
+                    <li >
+                        <a href="skin-bootstrap-material.html">
+                            <span>Bootstrap Material</span>
+                            <div><small>Bootstrap Material skin</small></div>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </li>
+        
+            <li >
                 <a href="#" onclick="doExpand('triggers')">
                     <span>Conditions and Triggers</span>
                     <span id="imgtriggers" class="glyphicon pull-right glyphicon-chevron-down" aria-hidden="true"></span>
@@ -538,6 +555,7 @@
         <div class="col-md-8">
             <h3 class="contenttitle">Custom navigation</h3>
             
+            
             External navigation: <span id="surveyProgress"></span>  <a id="surveyPrev" href="#" onclick="survey.prevPage();">Prev</a>  <a id="surveyNext" href="#" onclick="survey.nextPage();">Next</a>  <a id="surveyComplete" href="#"  onclick="survey.completeLastPage();">Complete</a>
             
             
@@ -730,6 +748,7 @@ survey.render();</code></pre>
 </p>
 <p>
         </div>
+        
         
     </div>
 </div>
