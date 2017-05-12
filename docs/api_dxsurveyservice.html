@@ -182,16 +182,40 @@
     <p data-bind="visible:classHasDocumentation">
         <div data-bind="html: curClass.documentation"></div>
     </p>
+    <p data-bind="visible: hasBaseTypes">
+        <span>Inherited from the following class(es): </span>
+        <!-- ko foreach: baseTypes -->
+        <a data-bind="attr: {href: href}"><span data-bind="text:name"></span></a><span data-bind="if: ($index() !== ($parent.baseTypes.length - 1))"> -> </span>
+        <!-- /ko -->
+    </p>
     <p>
         <span>Type to filter the list: </span><input id="iFilter" type="text" data-bind="textInput: filterString" />
+        <select data-bind="value:showPMETypes">
+            <option value="all">Show All</option>
+            <option value="property">Show Properties</option>
+            <option value="method">Show Methods</option>
+            <option value="event">Show Events</option>
+        </select>
     </p>
     <div data-bind="foreach: filteredItems">
-        <div><a data-bind="click:showHide"><span data-bind="text: name"></span></a></div>
+        <div><a data-bind="click:showHide"><span data-bind="text: name"></span></a><span>  </span> <span data-bind="text: pmeType"></span></div>
         <div data-bind="visible: koExpanded">
             <p>
                 <h4><span data-bind="text: name"></span><span>  </span><span data-bind="text: pmeType"></h4>
                 <div>
                     <span>Type: </span><span data-bind="text:type"></span>
+                </div>
+                <div data-bind="visible: isSerialized">
+                    The property is serializable. It is stored in survey json and you can edit it in the SurveyJS Editor.
+                </div>
+                <div data-bind="visible: hasDefaultValue">
+                    <span>The default value is: </span><span data-bind="text:defaultValue"></span>
+                </div>
+                <div data-bind="visible: hasSerializedChoices">
+                    <span>You may set the following values into this property: </span>
+                    <!-- ko foreach: serializedChoices -->
+                    <span data-bind="text:$data"></span><span data-bind="if: ($index() !== ($parent.serializedChoices.length - 1))">, </span>
+                    <!-- /ko -->
                 </div>
                 <div data-bind="visible: hasDocumentation, html: documentation"></div>
                 <div data-bind="visible: hasParameters">
@@ -218,17 +242,17 @@
     var curClass = {
     
         
-        name: "dxSurveyService", documentation: "<p>The class contains methods to work with www.dxsurvey.com service.</p>\n"
+        name: "dxSurveyService", documentation: "<p>The class contains methods to work with www.dxsurvey.com service.</p>\n", allTypes: ["dxSurveyService"]
     
     };
     var pmes = [
     
-    { name: "serviceUrl", className: "dxSurveyService", type: "string", pmeType: "property", "href": "dxSurveyService/serviceUrl.html", isSerialized: "", documentation: "\n", hasSet: "", 
+    { name: "serviceUrl", className: "dxSurveyService", type: "string", pmeType: "property", "href": "dxSurveyService/serviceUrl.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
         parameters:  [
                     
         ] }, 
     
-    { name: "loadSurvey", className: "dxSurveyService", type: "(surveyId: string, onLoad: (success: boolean, result: string, response: any) => void) => void", pmeType: "method", "href": "dxSurveyService/loadSurvey.html", isSerialized: "", documentation: "\n", hasSet: "", 
+    { name: "loadSurvey", className: "dxSurveyService", type: "(surveyId: string, onLoad: (success: boolean, result: string, response: any) => void) => void", pmeType: "method", "href": "dxSurveyService/loadSurvey.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
         parameters:  [
             
             { name: "surveyId", documentation: "\n", type: "string" }, 
@@ -237,7 +261,7 @@
                     
         ] }, 
     
-    { name: "sendResult", className: "dxSurveyService", type: "(postId: string, result: JSON, onSendResult: (success: boolean, response: any) => void, clientId?...", pmeType: "method", "href": "dxSurveyService/sendResult.html", isSerialized: "", documentation: "\n", hasSet: "", 
+    { name: "sendResult", className: "dxSurveyService", type: "(postId: string, result: JSON, onSendResult: (success: boolean, response: any) => void, clientId?...", pmeType: "method", "href": "dxSurveyService/sendResult.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
         parameters:  [
             
             { name: "postId", documentation: "\n", type: "string" }, 
@@ -252,7 +276,7 @@
                     
         ] }, 
     
-    { name: "sendFile", className: "dxSurveyService", type: "(postId: string, file: File, onSendFile: (success: boolean, response: any) => void) => void", pmeType: "method", "href": "dxSurveyService/sendFile.html", isSerialized: "", documentation: "\n", hasSet: "", 
+    { name: "sendFile", className: "dxSurveyService", type: "(postId: string, file: File, onSendFile: (success: boolean, response: any) => void) => void", pmeType: "method", "href": "dxSurveyService/sendFile.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
         parameters:  [
             
             { name: "postId", documentation: "\n", type: "string" }, 
@@ -263,7 +287,7 @@
                     
         ] }, 
     
-    { name: "getResult", className: "dxSurveyService", type: "(resultId: string, name: string, onGetResult: (success: boolean, data: any, dataList: any[], resp...", pmeType: "method", "href": "dxSurveyService/getResult.html", isSerialized: "", documentation: "\n", hasSet: "", 
+    { name: "getResult", className: "dxSurveyService", type: "(resultId: string, name: string, onGetResult: (success: boolean, data: any, dataList: any[], resp...", pmeType: "method", "href": "dxSurveyService/getResult.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
         parameters:  [
             
             { name: "resultId", documentation: "\n", type: "string" }, 
@@ -274,7 +298,7 @@
                     
         ] }, 
     
-    { name: "isCompleted", className: "dxSurveyService", type: "(resultId: string, clientId: string, onIsCompleted: (success: boolean, result: string, response: ...", pmeType: "method", "href": "dxSurveyService/isCompleted.html", isSerialized: "", documentation: "\n", hasSet: "", 
+    { name: "isCompleted", className: "dxSurveyService", type: "(resultId: string, clientId: string, onIsCompleted: (success: boolean, result: string, response: ...", pmeType: "method", "href": "dxSurveyService/isCompleted.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
         parameters:  [
             
             { name: "resultId", documentation: "\n", type: "string" }, 
@@ -289,21 +313,25 @@
         if(a.name == b.name) return 0;
         return a.name < b.name ? -1 : 1;
     });
+    function getClassObj(className) {
+        return {name: className, href: "/docs/api_" + className.toLowerCase() + ".html"};
+    }
     var ModelItem = function(item) {
-        this.getClassObj = function(className) {
-            return {name: className, href: "/docs/api_" + className.toLowerCase() + ".html"};
-        }
         var self = this;
         this.name = item.name;
         this.lowCaseName = this.name.toLowerCase();
         this.className = item.className;
         this.implemetedIn = [];
-        this.implemetedIn.push(this.getClassObj(item.className));
+        this.implemetedIn.push(getClassObj(item.className));
         this.type = item.type;
         this.pmeType = item.pmeType;
         this.href = item.href;
         this.documentation = item.documentation;
         this.hasDocumentation = item.documentation && item.documentation.length > 0;
+        this.hasDefaultValue = item.defaultValue != undefined;
+        if(this.hasDefaultValue) this.defaultValue = item.defaultValue; else this.defaultValue = null;
+        this.hasSerializedChoices = item.serializedChoices != undefined; 
+        if(this.hasSerializedChoices) this.serializedChoices = item.serializedChoices; else this.serializedChoices = [];
         this.parameters = [];
         if(item.parameters) {
             this.parameters = item.parameters;
@@ -326,12 +354,19 @@
             if(!this.documentation && item.documentation) {
                 this.documentation = item.documentation;
             }
-            this.implemetedIn.push(this.getClassObj(item.className));
+            this.implemetedIn.push(getClassObj(item.className));
         }
     }
     var Model = function(className) {
         var self = this;
         this.curClass = curClass;
+        this.curClass.allTypes.splice(0, 1);
+        this.hasBaseTypes = this.curClass.allTypes.length > 0;
+        this.baseTypes = [];
+        for(var i = 0; i < this.curClass.allTypes.length; i ++) {
+            var className = this.curClass.allTypes[i];
+            this.baseTypes.push(getClassObj(className));
+        }
         this.classHasDocumentation = this.curClass.documentation != "";
         this.items = [];
         var pmesHash = {};
@@ -346,10 +381,14 @@
             }
         }
         this.filterString = ko.observable("");
+        this.showPMETypes = ko.observable("all");
         this.koDummy = ko.observable(0);
         this.filteredItems = ko.computed(function() {
             var dummy = self.koDummy();
              return ko.utils.arrayFilter(self.items, function(item) {
+                if(self.showPMETypes() != "all") {
+                    if(self.showPMETypes() != item.pmeType) return false;
+                }
                 var str = self.filterString();
                 if(!str) return true;
                 str = str.toLowerCase();
@@ -357,6 +396,9 @@
             });
         });
         this.filterString.subscribe(function(newValue) {
+            self.koDummy(self.koDummy() + 1);
+        });
+        this.showPMETypes.subscribe(function(newValue) {
             self.koDummy(self.koDummy() + 1);
         });
 };

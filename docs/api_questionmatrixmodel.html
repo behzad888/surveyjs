@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>survey.js : QuestionMatrixDropdownModel</title>
+        <title>survey.js : QuestionMatrixModel</title>
         <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css"/>
         <link href="/css/style.css" type="text/css" rel="stylesheet" /> 
         <link href="/css/main.css" type="text/css" rel="stylesheet" />
@@ -242,7 +242,7 @@
     var curClass = {
     
         
-        name: "QuestionMatrixDropdownModel", documentation: "<p>A Model for a matrix dropdown question. You may use a dropdown, checkbox, radiogroup, text and comment questions as a cell editors.</p>\n", allTypes: ["QuestionMatrixDropdownModel","QuestionMatrixDropdownModelBase","Question","QuestionBase","Base"]
+        name: "QuestionMatrixModel", documentation: "<p>A Model for a simple matrix question.</p>\n", allTypes: ["QuestionMatrixModel","Question","QuestionBase","Base"]
     
     };
     var pmes = [
@@ -557,126 +557,27 @@
                     
         ] }, 
     
-    { name: "addDefaultColumns", className: "QuestionMatrixDropdownModelBase", type: "(matrix: QuestionMatrixDropdownModelBase) => void", pmeType: "method", "href": "QuestionMatrixDropdownModelBase/addDefaultColumns.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
-        parameters:  [
-            
-            { name: "matrix", documentation: "\n", type: "QuestionMatrixDropdownModelBase" } 
-                    
-        ] }, 
-    
-    { name: "columnMinWidth", className: "QuestionMatrixDropdownModelBase", type: "string", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/columnMinWidth.html", isSerialized: "true", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
+    { name: "isAllRowRequired", className: "QuestionMatrixModel", type: "boolean", pmeType: "property", "href": "QuestionMatrixModel/isAllRowRequired.html", isSerialized: "true", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
         parameters:  [
                     
         ] }, 
     
-    { name: "horizontalScroll", className: "QuestionMatrixDropdownModelBase", type: "boolean", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/horizontalScroll.html", isSerialized: "true", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
+    { name: "getType", className: "QuestionMatrixModel", type: "() => string", pmeType: "method", "href": "QuestionMatrixModel/getType.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
         parameters:  [
                     
         ] }, 
     
-    { name: "columnsChangedCallback", className: "QuestionMatrixDropdownModelBase", type: "() => void", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/columnsChangedCallback.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
+    { name: "hasRows", className: "QuestionMatrixModel", type: "boolean", pmeType: "property", "href": "QuestionMatrixModel/hasRows.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "false", 
         parameters:  [
                     
         ] }, 
     
-    { name: "updateCellsCallback", className: "QuestionMatrixDropdownModelBase", type: "() => void", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/updateCellsCallback.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
+    { name: "visibleRows", className: "QuestionMatrixModel", type: "MatrixRowModel[]", pmeType: "property", "href": "QuestionMatrixModel/visibleRows.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "false", 
         parameters:  [
                     
         ] }, 
     
-    { name: "getType", className: "QuestionMatrixDropdownModelBase", type: "() => string", pmeType: "method", "href": "QuestionMatrixDropdownModelBase/getType.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "columns", className: "QuestionMatrixDropdownModelBase", type: "MatrixDropdownColumn[]", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/columns.html", isSerialized: "true", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "true", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "cellType", className: "QuestionMatrixDropdownModelBase", type: "string", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/cellType.html", isSerialized: "true", defaultValue: "dropdown",serializedChoices:  ["dropdown","checkbox","radiogroup","text","comment"], documentation: "\n", hasSet: "true", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "columnColCount", className: "QuestionMatrixDropdownModelBase", type: "number", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/columnColCount.html", isSerialized: "true", defaultValue: null,serializedChoices:  [0,1,2,3,4], documentation: "\n", hasSet: "true", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "getRequiredText", className: "QuestionMatrixDropdownModelBase", type: "() => string", pmeType: "method", "href": "QuestionMatrixDropdownModelBase/getRequiredText.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "onLocaleChanged", className: "QuestionMatrixDropdownModelBase", type: "() => void", pmeType: "method", "href": "QuestionMatrixDropdownModelBase/onLocaleChanged.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "getColumnWidth", className: "QuestionMatrixDropdownModelBase", type: "(column: MatrixDropdownColumn) => string", pmeType: "method", "href": "QuestionMatrixDropdownModelBase/getColumnWidth.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
-        parameters:  [
-            
-            { name: "column", documentation: "\n", type: "MatrixDropdownColumn" } 
-                    
-        ] }, 
-    
-    { name: "choices", className: "QuestionMatrixDropdownModelBase", type: "any[]", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/choices.html", isSerialized: "true", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "true", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "optionsCaption", className: "QuestionMatrixDropdownModelBase", type: "string", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/optionsCaption.html", isSerialized: "true", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "true", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "locOptionsCaption", className: "QuestionMatrixDropdownModelBase", type: "LocalizableString", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/locOptionsCaption.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "false", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "addColumn", className: "QuestionMatrixDropdownModelBase", type: "(name: string, title?: string) => MatrixDropdownColumn", pmeType: "method", "href": "QuestionMatrixDropdownModelBase/addColumn.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
-        parameters:  [
-            
-            { name: "name", documentation: "\n", type: "string" }, 
-            
-            { name: "title", documentation: "\n", type: "string" } 
-                    
-        ] }, 
-    
-    { name: "visibleRows", className: "QuestionMatrixDropdownModelBase", type: "MatrixDropdownRowModelBase[]", pmeType: "property", "href": "QuestionMatrixDropdownModelBase/visibleRows.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "false", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "hasErrors", className: "QuestionMatrixDropdownModelBase", type: "(fireCallback?: boolean) => boolean", pmeType: "method", "href": "QuestionMatrixDropdownModelBase/hasErrors.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
-        parameters:  [
-            
-            { name: "fireCallback", documentation: "\n", type: "boolean" } 
-                    
-        ] }, 
-    
-    { name: "createQuestion", className: "QuestionMatrixDropdownModelBase", type: "(row: MatrixDropdownRowModelBase, column: MatrixDropdownColumn) => Question", pmeType: "method", "href": "QuestionMatrixDropdownModelBase/createQuestion.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
-        parameters:  [
-            
-            { name: "row", documentation: "\n", type: "MatrixDropdownRowModelBase" }, 
-            
-            { name: "column", documentation: "\n", type: "MatrixDropdownColumn" } 
-                    
-        ] }, 
-    
-    { name: "getType", className: "QuestionMatrixDropdownModel", type: "() => string", pmeType: "method", "href": "QuestionMatrixDropdownModel/getType.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "rows", className: "QuestionMatrixDropdownModel", type: "any[]", pmeType: "property", "href": "QuestionMatrixDropdownModel/rows.html", isSerialized: "true", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "true", 
-        parameters:  [
-                    
-        ] }, 
-    
-    { name: "onLocaleChanged", className: "QuestionMatrixDropdownModel", type: "() => void", pmeType: "method", "href": "QuestionMatrixDropdownModel/onLocaleChanged.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
+    { name: "onLocaleChanged", className: "QuestionMatrixModel", type: "() => void", pmeType: "method", "href": "QuestionMatrixModel/onLocaleChanged.html", isSerialized: "", defaultValue: null,serializedChoices:  null, documentation: "\n", hasSet: "", 
         parameters:  [
                     
         ] }, 
@@ -775,7 +676,7 @@
         });
 };
  
-ko.applyBindings(new Model("QuestionMatrixDropdownModel"), document.getElementById("objectProperties"));
+ko.applyBindings(new Model("QuestionMatrixModel"), document.getElementById("objectProperties"));
  </script>
 
                 </div>
