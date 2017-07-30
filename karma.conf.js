@@ -1,6 +1,6 @@
 ﻿var webpack = require('webpack');
 var webpackConfigCreator = require('./webpack.config');
-var webpackConfig = webpackConfigCreator({ platform: "knockout", buildType: "dev" });
+var webpackConfig = webpackConfigCreator({ platform: "aurelia", buildType: "dev" });
 
 module.exports = function(config) {
     config.set({

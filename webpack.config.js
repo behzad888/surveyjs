@@ -52,6 +52,11 @@ var platformOptions = {
         keywords: ['knockout'],
         dependencies: {'knockout': '^3.4.0'}
     },
+    'aurelia': {
+        externals: {},
+        keywords: ['aurelia'],
+        dependencies: {'@types/react': '15.0.21'}
+    },
     'jquery': {
         externals: {
             'jquery': {
